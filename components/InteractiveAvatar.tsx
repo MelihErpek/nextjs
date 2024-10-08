@@ -31,7 +31,7 @@ export default function InteractiveAvatar() {
   const [stream, setStream] = useState<MediaStream>();
   const [debug, setDebug] = useState<string>();
   const [knowledgeId, setKnowledgeId] = useState<string>("");
-  const [avatarId, setAvatarId] = useState<string>("");
+  const [avatarId, setAvatarId] = useState<string>("2c57ba04ef4d4a5ca30a953d0791e7e3");
   const [language, setLanguage] = useState<string>('en');
 
   const [data, setData] = useState<StartAvatarResponse>();
@@ -47,7 +47,7 @@ export default function InteractiveAvatar() {
         method: "POST",
       });
       const token = await response.text();
-
+      console.log(token);
       console.log("Access Token:", token); // Log the token to verify
 
       return token;
@@ -94,7 +94,7 @@ export default function InteractiveAvatar() {
         knowledgeId: knowledgeId, // Or use a custom `knowledgeBase`.
         voice: {
           rate: 1.5, // 0.5 ~ 1.5
-          emotion: VoiceEmotion.EXCITED,
+          emotion: VoiceEmotion.SERIOUS,
         },
         language: language,
       });
@@ -177,8 +177,8 @@ export default function InteractiveAvatar() {
   }, [mediaStream, stream]);
 
   return (
-    <div className="w-full flex flex-col gap-4">
-      <Card>
+    <div className="w-full flex flex-col gap-4 ">
+      <Card className="bg-white">
         <CardBody className="h-[500px] flex flex-col justify-center items-center">
           {stream ? (
             <div className="h-[500px] w-[900px] justify-center items-center flex rounded-lg overflow-hidden">
@@ -215,8 +215,8 @@ export default function InteractiveAvatar() {
             </div>
           ) : !isLoadingSession ? (
             <div className="h-full justify-center items-center flex flex-col gap-8 w-[500px] self-center">
-              <div className="flex flex-col gap-2 w-full">
-                <p className="text-sm font-medium leading-none">
+              <div className="w-60 ">
+                {/* <p className="text-sm font-medium leading-none">
                   Custom Knowledge ID (optional)
                 </p>
                 <Input
@@ -247,15 +247,16 @@ export default function InteractiveAvatar() {
                       {avatar.name}
                     </SelectItem>
                   ))}
-                </Select>
+                </Select> */}
                 <Select
                   label="Select language"
                   placeholder="Select language"
-                  className="max-w-xs"
+                  className="max-w-xs bg-white"
                   selectedKeys={[language]}
                   onChange={(e) => {
                     setLanguage(e.target.value);
                   }}
+                  
                 >
                   {STT_LANGUAGE_LIST.map((lang) => (
                     <SelectItem key={lang.key}>
@@ -287,7 +288,7 @@ export default function InteractiveAvatar() {
             }}
           >
             <Tab key="text_mode" title="Text mode" />
-            <Tab key="voice_mode" title="Voice mode" />
+            {/* <Tab key="voice_mode" title="Voice mode" /> */}
           </Tabs>
           {chatMode === "text_mode" ? (
             <div className="w-full flex relative">

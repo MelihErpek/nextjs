@@ -19,11 +19,11 @@ const fontMono = FontMono({
 
 export const metadata: Metadata = {
   title: {
-    default: "HeyGen Interactive Avatar SDK Demo",
-    template: `%s - HeyGen Interactive Avatar SDK Demo`,
+    default: "Universal Mccan",
+    template: `Universal Mccan`,
   },
   icons: {
-    icon: "/heygen-logo.png",
+    icon: "/um.png",
   },
 };
 
@@ -51,7 +51,7 @@ export default function RootLayout({
           <main className="relative flex flex-col h-screen w-screen">
             <NavBar />
             {children}
-          </main>
+          </main> 
         </Providers>
       </body>
     </html>

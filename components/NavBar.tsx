@@ -12,18 +12,14 @@ import { ThemeSwitch } from "./ThemeSwitch";
 
 export default function NavBar() {
   return (
-    <Navbar className="w-full">
-      <NavbarBrand>
+    <div className="w-full flex justify-center  bg-white p-6">
         <Link isExternal aria-label="HeyGen" href="https://app.heygen.com/">
           <HeyGenLogo />
         </Link>
-        <div className="bg-gradient-to-br from-sky-300 to-indigo-500 bg-clip-text ml-4">
-          <p className="text-xl font-semibold text-transparent">
-            HeyGen Interactive Avatar SDK NextJS Demo
+          <p className="text-xl font-semibold text-red-700 mt-1 ml-2">
+            UM Turkey
           </p>
-        </div>
-      </NavbarBrand>
-      <NavbarContent justify="center">
+      {/* <NavbarContent justify="center">
         <NavbarItem className="flex flex-row items-center gap-4">
           <Link
             isExternal
@@ -64,7 +60,7 @@ export default function NavBar() {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-      </NavbarContent>
-    </Navbar>
+      </NavbarContent> */}
+    </div>
   );
 }
